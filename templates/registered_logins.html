@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Logins</title>
+</head>
+<body>
+    <h1>Registered Logins</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Login/Email</th>
+                <th>Phone</th>
+                <th>Qualification</th>
+                <th>Place</th>
+                <th>Applied Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for login in logins %}
+            <tr>
+                <td>{{ login.username }}</td>
+                <td>{{ login.phone }}</td>
+                <td>{{ login.qualification }}</td>
+                <td>{{ login.place }}</td>
+                <td>
+                    {% if login.username in applied_jobs %}
+                        {% for job in applied_jobs[login.username] %}
+                            {{ job }}<br>
+                        {% endfor %}
+                    {% else %}
+                        No jobs applied
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ name }}!</h1>
+    <h2>Available Jobs</h2>
+    <form method="POST" action="{{ url_for('apply_job') }}">
+        <select name="job_id">
+            {% for job in jobs %}
+                <option value="{{ job.id }}">{{ job.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Apply</button>
+    </form>
+
+    <p><a href="{{ url_for('user_login') }}">Logout</a></p>
+</body>
+</html>
+
+
+
+
+
